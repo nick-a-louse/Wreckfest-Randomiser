@@ -24,9 +24,10 @@ h1 {
 h2 {
   font-size: 30px;
   letter-spacing: 1px;
+
 }
 
-h3 {
+h3, input[type="submit"] {
   font-size: 20px;
   letter-spacing: 1px;
   margin-top: 5px;
@@ -42,9 +43,13 @@ h1, h2, h3{
   text-align: center;
 } 
 
-h1, h2, h3, p, label, footer, table{
+h1, h2, h3, p, label, footer, table, input[type="submit"]{
   font-family: 'American Captain',sans-serif;
   color: white;
+}
+
+fieldset{
+  margin-top: 10px;
 }
 
 table, th, td{
@@ -61,14 +66,20 @@ th, td{
   width: 50%;
 }
 
+.map{
+  border: 1px solid #e7d632;
+padding-top: 10px;
+}
+
 .results{
 /*  display: inline-block;*/
   column-width: 300px;
-  border-color: #e7d632; 
+
 }
 
 .track-results, .car-results{
   break-inside: avoid-column;
+  padding-top: 5px;
 }
 
 label{
@@ -90,11 +101,23 @@ label{
   max-width: 800px;
 }
 
-img {
+img, .map {
   width: 80%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 50%;
+  margin: 1em auto;
+  height: 2em;
+
+  background-color: rgb(65, 64, 64);
+  border-color: #e7d632;
+  color: white;
+  min-width: 150px;
 }
 
 hr {
@@ -107,6 +130,8 @@ hr {
 .bottom-line {
   margin-top: 25px;
 }
+
+
 
 /* FOOTER */
 
