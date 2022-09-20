@@ -1,6 +1,7 @@
 body {
   background: url(./wreckfest_tracks/Bleak_city_loading.png) top left no-repeat ;
   background-attachment: fixed;
+  background-size: cover;
   padding: 20px;
 }
 
