@@ -1,0 +1,5 @@
+1) Retrieve which tick boxes are marked
+2) Search the JSON for each tick box, adding or subtracking the index values to an array (once to track, once for car
+3) Select a random index from each list
+4) retrieve the json for the indexes
+5) show the image on the page
