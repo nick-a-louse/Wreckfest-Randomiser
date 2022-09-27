@@ -6,18 +6,21 @@ const getJSON(jsonUrl) = async url => {
     const data = response.json(); // get JSON from the response
     return data; // returns a promise, which resolves to this data value
     }
- 
+
 console.log("Fetching track data...");
-getJSON('tracks.json').then(data => {
-    console.log(data);
+const trackData = getJSON('tracks.json').then(data => {
+//    console.log(data);
 }).catch(error => {
     console.error(error);
 });
+console.log(trackData);
 
 console.log("Fetching car data...");
-getJSON('cars.json').then(data => {
-    console.log(data);
+const carData = getJSON('cars.json').then(data => {
+    carData = data
+//    console.log(data);
 }).catch(error => {
     console.error(error);
 });
+console.log(carData);
 
