@@ -12,17 +12,51 @@ async function getCars() {
     }
 }
 
+
+// Function to get checkbox values
+
+let classA = ''
+let classB = ''
+let classC = ''
+let special = ''
+
+function validate() {
+    if (document.getElementById('a-cars').checked) {
+        classA = true;
+    } else {
+        classA = false;
+    }
+    if (document.getElementById('b-cars').checked) {
+        var classB = true;
+    } else {
+        var classB = false;
+    }
+    if (document.getElementById('c-cars').checked) {
+        var classC = true;
+    } else {
+        var classC = false;
+    } 
+    if (document.getElementById('special-cars').checked) {
+        var special = true;
+    } else {
+        var special = false;
+    } 
+}
+
 // Funtion to create and array of cars. -> Still need to make dynamic and add extra filters
 
-var filteredCars = [];
+
+
+
 
 async function renderCars() {
     let cars = await getCars();
+    let filteredCars = [];
     let html = '';
-
+    validate();
     cars.forEach(car => {
-        if (car.Class == "A") {
-            var tempCar = (car.Index);
+        if ((classA = true && car.class == ("A"))) {
+            var tempCar = (car.index);
             filteredCars.push((tempCar));  
         };
     });
