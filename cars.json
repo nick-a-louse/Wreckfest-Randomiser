@@ -394,7 +394,7 @@
    "name": "Double Decker",
    "summary": "Double Decker is an American full-size double decker vehicle featured in the game since the release.\n\nIt can be won from the Double Trouble event.\n\nIt features Speedemon and Buggy fixed on top of each other.",
    "howObtained": "Career Reward",
-   "specialVehicle": "N",
+   "specialVehicle": "Y",
    "baseHP": 164,
    "class": "C",
    "driveType": "Rear",
