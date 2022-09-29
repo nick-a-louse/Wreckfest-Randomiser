@@ -15,10 +15,12 @@ async function getCars() {
 
 // Function to get checkbox values
 
-let classA = ''
-let classB = ''
-let classC = ''
-let special = ''
+var classA = true;
+var classB = true;
+var classC = true;
+var classD = true;
+var special = false;
+
 
 function validate() {
     if (document.getElementById('a-cars').checked) {
@@ -27,27 +29,28 @@ function validate() {
         classA = false;
     }
     if (document.getElementById('b-cars').checked) {
-        var classB = true;
+        classB = true;
     } else {
-        var classB = false;
+        classB = false;
     }
     if (document.getElementById('c-cars').checked) {
-        var classC = true;
+        classC = true;
     } else {
-        var classC = false;
+        classC = false;
+    } 
+    if (document.getElementById('d-cars').checked) {
+        classD = true;
+    } else {
+        classD = false;
     } 
     if (document.getElementById('special-cars').checked) {
-        var special = true;
+        special = true;
     } else {
-        var special = false;
+        special = false;
     } 
-}
+};
 
-// Funtion to create and array of cars. -> Still need to make dynamic and add extra filters
-
-
-
-
+// Funtion to create and array of cars. -> Still need to add extra filters
 
 async function renderCars() {
     let cars = await getCars();
@@ -55,14 +58,20 @@ async function renderCars() {
     let html = '';
     validate();
     cars.forEach(car => {
-        if ((classA = true && car.class == ("A"))) {
+        if ((((classA == true && car.class == ("A"))) && ((special == false && car.specialVehicle == ("N")))) ||
+        (((classA == true && car.class == ("A"))) && ((special == true && car.specialVehicle == ("Y")))) ||
+        (((classB == true && car.class == ("B"))) && ((special == false && car.specialVehicle == ("N")))) ||
+        (((classB == true && car.class == ("B"))) && ((special == true && car.specialVehicle == ("Y")))) ||
+        (((classC == true && car.class == ("C"))) && ((special == false && car.specialVehicle == ("N")))) ||
+        (((classC == true && car.class == ("C"))) && ((special == true && car.specialVehicle == ("Y")))) ||
+        (((classD == true && car.class == ("D"))) && ((special == false && car.specialVehicle == ("N")))) ||
+        (((classD == true && car.class == ("D"))) && ((special == true && car.specialVehicle == ("Y")))))
+        {
             var tempCar = (car.index);
             filteredCars.push((tempCar));  
         };
     });
-
 console.log(filteredCars);
-
 }
 
 renderCars();
