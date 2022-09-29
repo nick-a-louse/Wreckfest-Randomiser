@@ -1,8 +1,5 @@
 <!--./index.js-->
 
-// Missing the bus in the JSON!!
-
-// Function to get checkbox values
 
 var classA = true;
 var classB = true;
@@ -10,6 +7,7 @@ var classC = true;
 var classD = true;
 var special = false;
 
+// Function to get checkbox values
 function validate() {
     if (document.getElementById('a-cars').checked) {
         classA = true;
@@ -37,6 +35,7 @@ function validate() {
         special = false;
     } 
 };
+console.log(special);
 
 // Function to retrieve the car json file
 
@@ -50,7 +49,7 @@ async function getCars() {
     }
 };
 
-// Funtion to create and array of cars. -> Still need to add extra filters
+// Function to create an array of cars. -> Filters still don't work properly
 
 async function renderCars() {
 
@@ -58,35 +57,43 @@ async function renderCars() {
     let filteredCars = [];
     let numCars = 0;
     let html = '';
-    // console.log("special: "+ special);
-    // console.log("classs A: " + classA);
     validate();
-    cars.forEach(car => {
-        if ((((classA == true && car.class == ("A"))) && ((special == false && car.specialVehicle == ("N")))) ||
-        (((classA == true && car.class == ("A"))) && ((special == true))) ||
-        (((classB == true && car.class == ("B"))) && ((special == false && car.specialVehicle == ("N")))) ||
-        (((classB == true && car.class == ("B"))) && ((special == true))) ||
-        (((classC == true && car.class == ("C"))) && ((special == false && car.specialVehicle == ("N")))) ||
-        (((classC == true && car.class == ("C"))) && ((special == true))) ||
-        (((classD == true && car.class == ("D"))) && ((special == false && car.specialVehicle == ("N")))) ||
-        (((classD == true && car.class == ("D"))) && ((special == true))))
+
+    //Logic goes through every car in the JSON and checks it against the selected checkboxes from the HTML
+    cars.forEach(car => { 
+        if ((((classA === true && car.class === ("A"))) && ((special === false && car.specialVehicle === ("N")))) ||
+        (((classA === true && car.class === ("A"))) && ((special === true))) ||
+        (((classB === true && car.class === ("B"))) && ((special === false && car.specialVehicle === ("N")))) ||
+        (((classB === true && car.class === ("B"))) && ((special === true))) ||
+        (((classC === true && car.class === ("C"))) && ((special === false && car.specialVehicle === ("N")))) ||
+        (((classC === true && car.class === ("C"))) && ((special === true))) ||
+        (((classD === true && car.class === ("D"))) && ((special === false && car.specialVehicle === ("N")))) ||
+        (((classD === true && car.class === ("D"))) && ((special === true))))
         {
-            var tempCar = (car.index);
-            filteredCars.push((tempCar));  
+            var tempCar = (car.index); // Adds any cars that meet the above criteria to a list
+            filteredCars.push((tempCar));
+            console.log(car.specialVehicle);
         };
-    numCars = filteredCars.length;
-   
+    numCars = filteredCars.length; // Counts how many cars have met the criteria
+
     });
 
-// Choosing a random number car from the array
-// console.log("Array Length: " + numCars); 
-chosenCar = Math.floor(Math.random() * (numCars+1));
-// console.log("Random Car Number: " + chosenCar);
-// console.log(filteredCars);
 
-console.log(cars[chosenCar].name);
-console.log("./wreckfest_cars"+cars[chosenCar].carImage);
-console.log(cars[chosenCar].summary);
+// Choosing a random number car from the array
+chosenCar = ((Math.floor(Math.random() * (numCars+1))));
+
+
+//Assigning the elements to the HTML page
+document.getElementById("nameHTML").innerHTML = (cars[chosenCar].name);
+document.getElementById("summaryHTML").innerHTML = (cars[chosenCar].summary);
+document.getElementById("baseHPHTML").innerHTML = (cars[chosenCar].baseHP);
+document.getElementById("accelerationHTML").innerHTML = (cars[chosenCar].acceleration);
+document.getElementById("topSpeedHTML").innerHTML = (cars[chosenCar].topSpeed);
+document.getElementById("corneringHTML").innerHTML = (cars[chosenCar].cornering);
+document.getElementById("strengthHTML").innerHTML = (cars[chosenCar].strength);
+document.getElementById("carImageHTML").src = ("./wreckfest_cars/"+cars[chosenCar].carImage);
+
+
 }
 
 //renderCars();
