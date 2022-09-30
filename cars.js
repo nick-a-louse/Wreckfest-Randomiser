@@ -78,14 +78,15 @@ async function renderCars() {
 // Error capture if no cars meet criteria
 if (numCars == 0) {
     console.log("oh balls");
-    document.getElementById("nameHTML").innerHTML = ("No cars meet the selected criteria. Here's a picture of Tina instead");
-    document.getElementById("summaryHTML").innerHTML = ("Sexy AF");
-    document.getElementById("baseHPHTML").innerHTML = (69);
-    document.getElementById("accelerationHTML").innerHTML = (10);
-    document.getElementById("topSpeedHTML").innerHTML = (10);
-    document.getElementById("corneringHTML").innerHTML = (10);
-    document.getElementById("strengthHTML").innerHTML = (10);
-    document.getElementById("carImageHTML").src = ("./wreckfest_cars/tina.jpeg");
+    window.alert("No cars met your selection criteria, so I suggest you drive the Rocket RX!");
+    document.getElementById("nameHTML").innerHTML = (cars[58].name);
+    document.getElementById("summaryHTML").innerHTML = (cars[58].summary);
+    document.getElementById("baseHPHTML").innerHTML = (cars[58].baseHP);
+    document.getElementById("accelerationHTML").innerHTML = (cars[58].acceleration);
+    document.getElementById("topSpeedHTML").innerHTML = (cars[58].topSpeed);
+    document.getElementById("corneringHTML").innerHTML = (cars[58].cornering);
+    document.getElementById("strengthHTML").innerHTML = (cars[58].strength);
+    document.getElementById("carImageHTML").src = ("./wreckfest_cars/"+cars[58].carImage);
     return;
 };
 

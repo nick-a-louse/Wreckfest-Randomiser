@@ -62,12 +62,13 @@ async function renderTracks() {
 // Error capture if no tracks meet criteria
 if (numTracks == 0) {
     console.log("oh balls");
-    document.getElementById("trackName").innerHTML = ("No tracks meet the selected criteria. Here's a picture of Tina instead");
-    document.getElementById("trackSummary").innerHTML = ("Sexy AF");
-    document.getElementById("trackLength").innerHTML = ("100 km");
-    document.getElementById("trackSurface").innerHTML = ("Slippery");
-    document.getElementById("trackImage").src = ("./wreckfest_cars/tina.jpeg");
-    document.getElementById("trackMap").src = ("./wreckfest_cars/tina.jpeg");
+    window.alert("You haven't selected a track, so I suggest you race on Hillstreet!");
+    document.getElementById("trackName").innerHTML = (tracks[51].name + " " + tracks[51].version);
+    document.getElementById("trackSummary").innerHTML = (tracks[51].summary);
+    document.getElementById("trackLength").innerHTML = (tracks[51].length);
+    document.getElementById("trackSurface").innerHTML = (tracks[51].surfaceType);
+    document.getElementById("trackImage").src = ("./wreckfest_tracks/"+tracks[5].coverImage);
+    document.getElementById("trackMap").src = ("./wreckfest_tracks/"+tracks[51].mapImage);
     return;
 };
 
