@@ -1,11 +1,11 @@
 <!--./index.js-->
 
 
-var classA = true;
-var classB = true;
-var classC = true;
-var classD = true;
-var special = false;
+let classA = true;
+let classB = true;
+let classC = true;
+let classD = true;
+let special = false;
 
 // Function to get checkbox values
 function validate() {
@@ -35,7 +35,7 @@ function validate() {
         special = false;
     } 
 };
-console.log(special);
+
 
 // Function to retrieve the car json file
 
@@ -59,6 +59,8 @@ async function renderCars() {
     let html = '';
     validate();
 
+ //   console.log("Class A?: " + classA) + " Class B?: " + classB + " Class C?: " + classC + " Class D?: " + classD + " Special: " + special);
+
     //Logic goes through every car in the JSON and checks it against the selected checkboxes from the HTML
     cars.forEach(car => { 
         if ((((classA === true && car.class === ("A"))) && ((special === false && car.specialVehicle === ("N")))) ||
@@ -70,18 +72,31 @@ async function renderCars() {
         (((classD === true && car.class === ("D"))) && ((special === false && car.specialVehicle === ("N")))) ||
         (((classD === true && car.class === ("D"))) && ((special === true))))
         {
-            var tempCar = (car.index); // Adds any cars that meet the above criteria to a list
+            let tempCar = (car.index); // Adds any cars that meet the above criteria to a list
             filteredCars.push((tempCar));
-            console.log(car.specialVehicle);
         };
     numCars = filteredCars.length; // Counts how many cars have met the criteria
-
     });
 
+if (numCars == 0) {
+    console.log("oh balls");
+    document.getElementById("nameHTML").innerHTML = ("No cars meet the selected criteria. Here's a picture of Tina instead");
+    document.getElementById("summaryHTML").innerHTML = ("Sexy AF");
+    document.getElementById("baseHPHTML").innerHTML = (69);
+    document.getElementById("accelerationHTML").innerHTML = (10);
+    document.getElementById("topSpeedHTML").innerHTML = (10);
+    document.getElementById("corneringHTML").innerHTML = (10);
+    document.getElementById("strengthHTML").innerHTML = (10);
+    document.getElementById("carImageHTML").src = ("./wreckfest_cars/tina.jpeg");
+    return;
+};
 
-// Choosing a random number car from the array
-chosenCar = ((Math.floor(Math.random() * (numCars+1))));
-
+// Get the right car index from the JSON
+let randomCar = ((Math.floor(Math.random() * (numCars+1))));
+let carIndex = filteredCars[randomCar];
+let chosenCar = cars.findIndex(function(item, i){
+  return item.index === carIndex
+});
 
 //Assigning the elements to the HTML page
 document.getElementById("nameHTML").innerHTML = (cars[chosenCar].name);
@@ -92,36 +107,4 @@ document.getElementById("topSpeedHTML").innerHTML = (cars[chosenCar].topSpeed);
 document.getElementById("corneringHTML").innerHTML = (cars[chosenCar].cornering);
 document.getElementById("strengthHTML").innerHTML = (cars[chosenCar].strength);
 document.getElementById("carImageHTML").src = ("./wreckfest_cars/"+cars[chosenCar].carImage);
-
-
-}
-
-//renderCars();
-
-// async function getCars() {
-//     let url = './cars.json';
-//     try {
-//         let res = await fetch(url);
-//         return await res.json();
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-// async function renderCars() {
-//     let cars = await getCars();
-//     let html = '';
-//     let filteredCars = '';
-//     cars.forEach(car => {
-//         let htmlSegment = `<div class="user">
-//                             <h2>${car.Index} ${car.Name}</h2>
-//                         </div>`;
-
-//         html += htmlSegment;
-//     });
-
-//     let container = document.querySelector('.container');
-//     container.innerHTML = html;
-// }
-
-// renderCars();
+};
