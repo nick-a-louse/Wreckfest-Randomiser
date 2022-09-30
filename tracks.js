@@ -71,7 +71,7 @@ async function renderTracks() {
 // Error capture if no tracks meet criteria
 if (numTracks == 0) {
     document.getElementById("trackAlert").innerHTML = ("<div class='alert' id='alertTrack'><span class='closebtn' onclick='this.parentElement.style.display="+'"none"'+"';>&times;</span>Your filter doesn't return any tracks, so I've selected <strong>Hillstreet!</strong></div>");
-    document.getElementById("trackName").innerHTML = (tracks[51].name + " " + tracks[51].version);
+    document.getElementById("trackName").innerHTML = (tracks[51].name + " - " + tracks[51].version);
     document.getElementById("trackSummary").innerHTML = (tracks[51].summary);
     document.getElementById("trackLength").innerHTML = (tracks[51].length);
     document.getElementById("trackSurface").innerHTML = (tracks[51].surfaceType);
