@@ -1,6 +1,0 @@
-1) Retrieve which tick boxes are marked - Done
-2) Iterate over each row, search for tracks based on which checkboxes are ticked.
-3) Create a list (or array?)
-4) Select a random index from the list / array
-5) Return the json for the selected index (innerHTML)
- 
