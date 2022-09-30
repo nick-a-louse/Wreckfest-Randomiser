@@ -90,7 +90,7 @@ let chosenTrack = tracks.findIndex(function(item, i){
 });
 
 //Assigning the elements to the HTML page
-document.getElementById("trackName").innerHTML = (tracks[chosenTrack].name + " " + tracks[chosenTrack].version);
+document.getElementById("trackName").innerHTML = (tracks[chosenTrack].name + " - " + tracks[chosenTrack].version);
 document.getElementById("trackSummary").innerHTML = (tracks[chosenTrack].summary);
 document.getElementById("trackLength").innerHTML = (tracks[chosenTrack].length);
 document.getElementById("trackSurface").innerHTML = (tracks[chosenTrack].surfaceType);
