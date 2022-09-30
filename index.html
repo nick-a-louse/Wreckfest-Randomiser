@@ -13,7 +13,7 @@
     <script type="text/javascript" src="cars.js"></script>
     <script>window.onload = renderCars();renderTracks()</script>
   </head>
-  <body>
+  <body id="bckgrnd">
       <div class="menu">
       <header>
         <h1><span class="emphasised">WRECKFEST</span>   RANDOMISER</h1>
@@ -56,7 +56,8 @@
               <input id="special-cars" type="checkbox" name="special-cars" class="inline" unchecked/> Special Cars
             </label>
           </fieldset>
-
+          <div id="trackAlert"></div>
+          <div id="carAlert"></div>
           <!-- Submit button with script -->
           <input type="submit" value="Submit" onclick="renderCars();renderTracks()"/>
         </section>

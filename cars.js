@@ -1,5 +1,4 @@
-<!--./cars.js-->
-
+//  
 
 let classA = true;
 let classB = true;
@@ -57,6 +56,7 @@ async function renderCars() {
     let numCars = 0;
     let html = '';
     validate();
+    clearError('alertCar');
 
     //Logic goes through every car in the JSON and checks it against the selected checkboxes from the HTML
     cars.forEach(car => { 
@@ -77,8 +77,7 @@ async function renderCars() {
 
 // Error capture if no cars meet criteria
 if (numCars == 0) {
-    console.log("oh balls");
-    window.alert("No cars met your selection criteria, so I suggest you drive the Rocket RX!");
+    document.getElementById("carAlert").innerHTML = ("<div class='alert' id='alertCar'><span class='closebtn' onclick='this.parentElement.style.display="+'"none"'+"';>&times;</span>Your filter doesn't return any cars, so I've selected <strong>Rocket RX!</strong></div>");
     document.getElementById("nameHTML").innerHTML = (cars[58].name);
     document.getElementById("summaryHTML").innerHTML = (cars[58].summary);
     document.getElementById("baseHPHTML").innerHTML = (cars[58].baseHP);

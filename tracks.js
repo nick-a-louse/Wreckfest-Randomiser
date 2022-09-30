@@ -1,5 +1,13 @@
-<!--./tracks.js-->
+// <!--./tracks.js-->
 
+function clearError(el) {
+    try{
+        document.getElementById(el).remove();
+    }
+    catch(err) {
+        return;
+    };
+}
 
 let race = true;
 let derby = true;
@@ -46,7 +54,8 @@ async function renderTracks() {
     let numTracks = 0;
     let html = '';
     validateTracks();
- 
+    clearError('alertTrack');
+
     // Logic goes through every track in the JSON and checks it against the selected checkboxes from the HTML
     tracks.forEach(track => { 
         if ((race === true && track.trackType === ("Race")) ||
@@ -61,14 +70,15 @@ async function renderTracks() {
 
 // Error capture if no tracks meet criteria
 if (numTracks == 0) {
-    console.log("oh balls");
-    window.alert("You haven't selected a track, so I suggest you race on Hillstreet!");
+    document.getElementById("trackAlert").innerHTML = ("<div class='alert' id='alertTrack'><span class='closebtn' onclick='this.parentElement.style.display="+'"none"'+"';>&times;</span>Your filter doesn't return any tracks, so I've selected <strong>Hillstreet!</strong></div>");
     document.getElementById("trackName").innerHTML = (tracks[51].name + " " + tracks[51].version);
     document.getElementById("trackSummary").innerHTML = (tracks[51].summary);
     document.getElementById("trackLength").innerHTML = (tracks[51].length);
     document.getElementById("trackSurface").innerHTML = (tracks[51].surfaceType);
-    document.getElementById("trackImage").src = ("./wreckfest_tracks/"+tracks[5].coverImage);
+    document.getElementById("trackImage").src = ("./wreckfest_tracks/"+tracks[51].coverImage);
     document.getElementById("trackMap").src = ("./wreckfest_tracks/"+tracks[51].mapImage);
+    document.body.style.backgroundImage = "url('./wreckfest_tracks/"+tracks[51].loadingImage+"')";
+
     return;
 };
 
@@ -86,4 +96,5 @@ document.getElementById("trackLength").innerHTML = (tracks[chosenTrack].length);
 document.getElementById("trackSurface").innerHTML = (tracks[chosenTrack].surfaceType);
 document.getElementById("trackImage").src = ("./wreckfest_tracks/"+tracks[chosenTrack].coverImage);
 document.getElementById("trackMap").src = ("./wreckfest_tracks/"+tracks[chosenTrack].mapImage);
+document.body.style.backgroundImage = "url('./wreckfest_tracks/"+tracks[chosenTrack].loadingImage+"')";
 };
