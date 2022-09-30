@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wreckfest Randomiser</title>
     <link href="styles.css" rel="stylesheet"/>
-
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./favicon/site.webmanifest">
-    
+    <script type="text/javascript" src="tracks.js"></script>    
     <script type="text/javascript" src="cars.js"></script>
-    <script>
-       window.onload = renderCars;
-      </script>
+    <script>window.onload = renderCars();renderTracks()</script>
   </head>
   <body>
       <div class="menu">
@@ -61,7 +58,7 @@
           </fieldset>
 
           <!-- Submit button with script -->
-          <input type="submit" value="Submit" onclick="renderCars()"/>
+          <input type="submit" value="Submit" onclick="renderCars();renderTracks()"/>
         </section>
         <hr>
         <div class="results">
@@ -69,20 +66,20 @@
         <!-- Track results   -->
         <section class="track-results">
           <article class="item" id="box"></article>
-            <h2>Bleak City - Race Track Reverse</h2>
-            <img src="./wreckfest_tracks/Bleak_city.png" alt="track shot"/>
-            <p class="track">We all dream of success and the opportunity to earn riches beyond our wildest imaginations but what happens to those who fail? They wander endlessly around the glass-laden, sky-scraping temples of their former glory, waiting for the Maim Street Crash</p>
+            <h2 id="trackName"></h2>
+            <img id="trackImage" alt="track shot"/>
+            <p class="track" id="trackSummary"></p>
             <table>
               <tr>
                 <th>Length</th>
                 <th>Surface Type</th>
               </tr>
               <tr>
-                <td>3.44 km</td>
-                <td>100% Gravel</td>
+                <td id="trackLength"></td>
+                <td id="trackSurface">"</td>
               </tr>
             </table>
-            <img class="map" src="./wreckfest_tracks/Crm01_1.png" alt="track map"/>
+            <img class="map" id="trackMap" alt="track map"/>
           </article>
         </section>
 

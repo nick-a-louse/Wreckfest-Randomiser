@@ -1,11 +1,11 @@
-<!--./index.js-->
+<!--./cars.js-->
 
 
 let classA = true;
 let classB = true;
 let classC = true;
 let classD = true;
-let special = false;
+let specialCar = false;
 
 // Function to get checkbox values
 function validate() {
@@ -30,9 +30,9 @@ function validate() {
         classD = false;
     } 
     if (document.getElementById('special-cars').checked) {
-        special = true;
+        specialCar = true;
     } else {
-        special = false;
+        specialCar = false;
     } 
 };
 
@@ -49,28 +49,25 @@ async function getCars() {
     }
 };
 
-// Function to create an array of cars. -> Filters still don't work properly
+// Function to create an array of cars
 
 async function renderCars() {
-
     let cars = await getCars();
     let filteredCars = [];
     let numCars = 0;
     let html = '';
     validate();
 
- //   console.log("Class A?: " + classA) + " Class B?: " + classB + " Class C?: " + classC + " Class D?: " + classD + " Special: " + special);
-
     //Logic goes through every car in the JSON and checks it against the selected checkboxes from the HTML
     cars.forEach(car => { 
-        if ((((classA === true && car.class === ("A"))) && ((special === false && car.specialVehicle === ("N")))) ||
-        (((classA === true && car.class === ("A"))) && ((special === true))) ||
-        (((classB === true && car.class === ("B"))) && ((special === false && car.specialVehicle === ("N")))) ||
-        (((classB === true && car.class === ("B"))) && ((special === true))) ||
-        (((classC === true && car.class === ("C"))) && ((special === false && car.specialVehicle === ("N")))) ||
-        (((classC === true && car.class === ("C"))) && ((special === true))) ||
-        (((classD === true && car.class === ("D"))) && ((special === false && car.specialVehicle === ("N")))) ||
-        (((classD === true && car.class === ("D"))) && ((special === true))))
+        if ((((classA === true && car.class === ("A"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
+        (((classA === true && car.class === ("A"))) && ((specialCar === true))) ||
+        (((classB === true && car.class === ("B"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
+        (((classB === true && car.class === ("B"))) && ((specialCar === true))) ||
+        (((classC === true && car.class === ("C"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
+        (((classC === true && car.class === ("C"))) && ((specialCar === true))) ||
+        (((classD === true && car.class === ("D"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
+        (((classD === true && car.class === ("D"))) && ((specialCar === true))))
         {
             let tempCar = (car.index); // Adds any cars that meet the above criteria to a list
             filteredCars.push((tempCar));
@@ -78,6 +75,7 @@ async function renderCars() {
     numCars = filteredCars.length; // Counts how many cars have met the criteria
     });
 
+// Error capture if no cars meet criteria
 if (numCars == 0) {
     console.log("oh balls");
     document.getElementById("nameHTML").innerHTML = ("No cars meet the selected criteria. Here's a picture of Tina instead");
