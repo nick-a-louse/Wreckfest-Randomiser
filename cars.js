@@ -67,7 +67,8 @@ async function renderCars() {
         (((classC === true && car.class === ("C"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
         (((classC === true && car.class === ("C"))) && ((specialCar === true))) ||
         (((classD === true && car.class === ("D"))) && ((specialCar === false && car.specialVehicle === ("N")))) ||
-        (((classD === true && car.class === ("D"))) && ((specialCar === true))))
+        (((classD === true && car.class === ("D"))) && ((specialCar === true))) ||
+        (((classA === false)) && ((classB === false)) && ((classC === false)) && ((classD === false)) && ((specialCar === true && car.specialVehicle === ("Y")))))
         {
             let tempCar = (car.index); // Adds any cars that meet the above criteria to a list
             filteredCars.push((tempCar));
